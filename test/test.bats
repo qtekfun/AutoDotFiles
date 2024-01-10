@@ -12,5 +12,6 @@ setup() {
 }
 
 @test "can run our script" {
-    install.sh
+    run install.sh
+    assert_output 'Hello it is installed'
 }
