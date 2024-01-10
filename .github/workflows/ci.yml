@@ -10,4 +10,4 @@ jobs:
         with:
           submodules: true
       - name: Test
-        run: ./test/bats/bin/bats test/test.bats
+        run: ./test/bats/bin/bats test
