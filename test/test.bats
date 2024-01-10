@@ -15,3 +15,17 @@ setup() {
     run install.sh
     assert_output 'Hello it is installed'
 }
+
+@test "file exists" {
+    source ./src/common/filesystem.sh
+    run file_exists $BATS_TEST_FILENAME
+    assert_output "$BATS_TEST_FILENAME exists."
+    [ "$status" -eq 1 ]
+}
+
+@test "file not exists" {
+    source ./src/common/filesystem.sh
+    run file_exists "~/dummy"
+    assert_output "~/dummy doesn't exist."
+    [ "$status" -eq 0 ]
+}
