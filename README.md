@@ -1,5 +1,7 @@
 # AutoDotFiles
 
+[![CI](https://github.com/qtekfun/AutoDotFiles/actions/workflows/ci.yml/badge.svg)](https://github.com/qtekfun/AutoDotFiles/actions/workflows/ci.yml)
+
 This are my depurated dotfiles and the way to be run in seconds
 
 ## Installation
