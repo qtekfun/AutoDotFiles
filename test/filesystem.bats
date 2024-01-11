@@ -16,3 +16,12 @@ setup() {
     assert_output "~/dummy doesn't exist."
     [ "$status" -eq 0 ]
 }
+
+@test "append line to file" {
+    run touch "test_file.txt"
+    run append_to_file "test_file.txt" "This works."
+    run cat "test_file.txt"
+    assert_output "This works."
+    run rm "test_file.txt"
+    [ "$status" -eq 0 ]
+}
