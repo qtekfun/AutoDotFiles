@@ -25,3 +25,18 @@ setup() {
     run rm "test_file.txt"
     [ "$status" -eq 0 ]
 }
+
+@test "check line in file that exists" {
+    run touch "test_file.txt"
+    run bash -c "echo 'line' > 'test_file.txt'"
+    run find_in_file "test_file.txt" "line"
+    [ "$status" -eq 1 ]
+    run rm "test_file.txt"
+}
+
+@test "check line in file that not exists" {
+    run touch "test_file.txt"
+    run find_in_file "test_file.txt" "line"
+    [ "$status" -eq 0 ]
+    run rm "test_file.txt"
+}
