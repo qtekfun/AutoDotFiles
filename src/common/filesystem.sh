@@ -9,3 +9,11 @@ file_exists() {
     echo "$FILE exists."
     return 1
 }
+
+append_to_file() {
+    FILE=$1
+    TEXT=$2
+    echo $TEXT >> $FILE
+    return 0
+}
+
