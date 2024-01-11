@@ -17,3 +17,12 @@ append_to_file() {
     return 0
 }
 
+find_in_file() {
+    FILE=$1
+    TEXT=$2
+    OUTPUT=$(grep -c $2 $1)
+    if [ "$OUTPUT" -gt "0" ]; then
+        return 1
+    fi
+    return 0
+}
