@@ -1,0 +1,4 @@
+if [ -f ~/.alias ]; then
+    echo "Loading your alias"
+    . ~/.alias
+fi
