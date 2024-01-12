@@ -40,3 +40,11 @@ setup() {
     [ "$status" -eq 0 ]
     run rm "test_file.txt"
 }
+
+@test "create file" {
+    run create_file "test_file.txt"
+    [ "$status" -eq 0 ]
+    run file_exists "test_file.txt"
+    [ "$status" -eq 1 ]
+    run rm "test_file.txt"
+}
