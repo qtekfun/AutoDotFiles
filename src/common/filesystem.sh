@@ -26,3 +26,9 @@ find_in_file() {
     fi
     return 0
 }
+
+create_file() {
+    FILE=$1
+    touch $1
+    return 0
+}
