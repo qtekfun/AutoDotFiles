@@ -11,7 +11,7 @@ file_exists() {
 append_to_file() {
     FILE=$1
     TEXT=$2
-    printf "$TEXT" >> $FILE
+    printf "$TEXT\n" >> $FILE
     return 0
 }
 
@@ -27,6 +27,6 @@ find_in_file() {
 
 create_file() {
     FILE=$1
-    touch $1
+    touch "$1"
     return 0
 }

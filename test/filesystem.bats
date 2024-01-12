@@ -24,7 +24,7 @@ teardown() {
 
 @test "append line to file" {
     run touch $TEST_FILE
-    run append_to_file $TEST_FILE "This works."
+    run append_to_file $TEST_FILE "This works.\n"
     run cat $TEST_FILE
     assert_output "This works."
     run rm $TEST_FILE
@@ -34,7 +34,8 @@ teardown() {
 @test "append line to file multiple lines" {
 
     run touch $TEST_FILE
-    run append_to_file $TEST_FILE "This works.\nand in two lines."
+    run append_to_file $TEST_FILE "This works."
+    run append_to_file $TEST_FILE "and in two lines."
     run cat $TEST_FILE
     assert_output "This works.
 and in two lines."
