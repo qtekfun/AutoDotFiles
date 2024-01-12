@@ -3,6 +3,13 @@ setup() {
     _common_setup
 
     source "$PROJECT_ROOT/src/common/filesystem.sh"
+    TEST_FOLDER="$PROJECT_ROOT/testing_stuff"
+    run bash -c "mkdir -p $TEST_FOLDER"
+    TEST_FILE="$TEST_FOLDER/test_file.txt"
+}
+
+teardown() {
+    run bash -c "rmdir $TEST_FOLDER"
 }
 
 @test "file exists" {
@@ -16,43 +23,44 @@ setup() {
 }
 
 @test "append line to file" {
-    run touch "test_file.txt"
-    run append_to_file "test_file.txt" "This works."
-    run cat "test_file.txt"
+    run touch $TEST_FILE
+    run append_to_file $TEST_FILE "This works."
+    run cat $TEST_FILE
     assert_output "This works."
-    run rm "test_file.txt"
+    run rm $TEST_FILE
     [ "$status" -eq 0 ]
 }
 
 @test "append line to file multiple lines" {
-    run touch "test_file.txt"
-    run append_to_file "test_file.txt" "This works.\nand in two lines."
-    run cat "test_file.txt"
+
+    run touch $TEST_FILE
+    run append_to_file $TEST_FILE "This works.\nand in two lines."
+    run cat $TEST_FILE
     assert_output "This works.
 and in two lines."
-    run rm "test_file.txt"
+    run rm $TEST_FILE
     [ "$status" -eq 0 ]
 }
 
 @test "check line in file that exists" {
-    run touch "test_file.txt"
-    run bash -c "echo 'line' > 'test_file.txt'"
-    run find_in_file "test_file.txt" "line"
+    run touch $TEST_FILE
+    run bash -c "echo 'line' > $TEST_FILE"
+    run find_in_file $TEST_FILE "line"
     [ "$status" -eq 1 ]
-    run rm "test_file.txt"
+    run rm $TEST_FILE
 }
 
 @test "check line in file that not exists" {
-    run touch "test_file.txt"
-    run find_in_file "test_file.txt" "line"
+    run touch $TEST_FILE
+    run find_in_file $TEST_FILE "line"
     [ "$status" -eq 0 ]
-    run rm "test_file.txt"
+    run rm $TEST_FILE
 }
 
 @test "create file" {
-    run create_file "test_file.txt"
+    run create_file $TEST_FILE
     [ "$status" -eq 0 ]
-    run file_exists "test_file.txt"
+    run file_exists $TEST_FILE
     [ "$status" -eq 1 ]
-    run rm "test_file.txt"
+    run rm $TEST_FILE
 }
