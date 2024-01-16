@@ -8,7 +8,6 @@ log() {
     if [ "$2" ]; then
         LOG_FILE=$2
     fi
-    echo $LOG_FILE
     file_exists $LOG_FILE
     if [ $? -eq 0 ]; then
         create_file $LOG_FILE
