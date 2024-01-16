@@ -1,1 +1,4 @@
+alias up='docker-compose up -d'
+alias down='docker-compose down'
+alias k='kubecolor'
 alias repo='cd ~/repos'

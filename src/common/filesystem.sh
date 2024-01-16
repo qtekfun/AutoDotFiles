@@ -16,9 +16,9 @@ append_to_file() {
 }
 
 find_in_file() {
-    FILE=$1
-    TEXT=$2
-    OUTPUT=$(grep -c $2 $1)
+    FILE="$1"
+    TEXT="$2"
+    OUTPUT=$(grep -c "$2" "$1")
     if [ "$OUTPUT" -gt "0" ]; then
         return 1
     fi
