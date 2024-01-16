@@ -17,4 +17,4 @@ In order to run the test you should initialize the submodules like this:
 `git submodule update --init --recursive`
 
 And then run the tests as:
-`./test/bats/bin/bats test/test.bats`
+`./test/bats/bin/bats test`
