@@ -22,7 +22,18 @@ create_alias() {
         fi
     fi
 
-    grep -v '^ *#' < "data/aliases" | while IFS= read -r alias
+    grep -v '^ *#' < "data/aliases_common" | while IFS= read -r alias
+    do
+        find_in_file "$ALIAS_FILE" "$alias"
+        if [ $? -eq 0 ]; then
+            append_to_file "$ALIAS_FILE" "$alias"
+            log "Alias \"$alias\" created"
+        else
+            log "Alias \"$alias\" already exists"
+        fi
+    done
+
+    grep -v '^ *#' < "data/aliases_ubuntu" | while IFS= read -r alias
     do
         find_in_file "$ALIAS_FILE" "$alias"
         if [ $? -eq 0 ]; then
